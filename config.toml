@@ -1,6 +1,6 @@
 baseURL = "https://lassesofus.github.io/Website-template/"
-title = "Project Title"
-description = "This is a project description"
+title = "Discussions on r/politics"
+description = "Exam project in "
 relativeURLs = true
 theme = "theme" 
 [params]
