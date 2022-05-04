@@ -1,10 +1,20 @@
 ---
-title: The project
+title: The Project
 layout: single
 next: data-description
 ---
 
-In this project, we will be investigating 
+In this project, we will be investigating data from the popular [r/politics](https://www.reddit.com/r/politics/) subreddit which, according to the site description, is intended for "news and discussions about U.S. politics."
+
+![](/images/r-politics_frontpage.png)
+*Image: Front page of the r/politics subreddit*
+
+
+Specifically, we'll be investigating the activity of redditors posting and commenting on Reddit submissions mentioning either "Trump" or "Biden" between 10-01-2020 and 11-3-2020, being the period immediately preceding the most recent U.S. presidential election. 
+
+Our aim with focus is to discover any shifts in sentiment relating to the two, at the time, presidential candidates, and to investigate how such potential changes relates to actual polling data obtained during the same period. We expect to see a significant correlation between the sentiment expressed in the online forum and polling data obtained by third-parties. 
+
+Furthermore, we will create and analyze the network of the redditors who partook in the discussions on r/politics to hopefully discover interesting insights about the online discourse covering the final weeks before the election day. Finally, we will seek to create a partitioning of the network of redditors, based on their expressed sentiment regarding either of the two presidential candidates. This partitioning will be our rather naïve attempt at inferring the political convictions of redditors, which we will compare with actual polling data.
 
 Donec posuere justo at risus [efficitur convallis](#). Donec enim nibh, aliquet vel risus id, tincidunt consectetur felis. Proin porttitor odio a orci accumsan bibendum id at risus. Sed a posuere odio, ac lobortis augue. Maecenas aliquet ipsum vel libero dignissim, non aliquet justo eleifend. Fusce mollis, ante eget tincidunt imperdiet, mi ligula venenatis ex, ut pulvinar nunc ipsum tempus eros. Aliquam erat volutpat. Sed id _iaculis arcu_, sit amet varius libero. Etiam quis nisl pretium, eleifend quam nec, rutrum sapien. **Donec rutrum accumsan orci.**
 
