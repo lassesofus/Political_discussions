@@ -2,7 +2,7 @@
 
 __A website template for your final project__ 🔮
 
-TESTING
+TESTING MAIN
 
 By using this template you would be able to create your own website and deploy it on Github Pages. This project creates a static website, to test it locally (on your machine) you need to install [Hugo](https://gohugo.io/getting-started/installing/). This facilitates you to develop it and display the changes in real-time.
 
