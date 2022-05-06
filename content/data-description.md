@@ -12,7 +12,7 @@ During this project, we worked with three data sets
 In the following, we will describe these datasets and give an overview of their most important properties. 
 
 # 1. The Submissions 
-________________
+
 Visitors at r/politics will quickly notice that the majority of the submissions posted on the site are by users linking to news articles published on news media sites like CNN or The Huffington Post. The headlines of these linked articles are then shown on r/politics as the titles of the submissions. Other users can then comment on the linked articles, which is what ultimately constitutes the actual user-generated content on the site.
 
 ![](/images/example_of_submission.png)
@@ -82,14 +82,11 @@ Furthermore, our query to extract comments from the r/politics subreddit was als
 * __They were posted no later than 11-10-2020.__ <br> 
  By including comments posted up to one week after the election day, we would ensure that we would also have some comments for any submissions made on the day before the election day, without including comments that were made way after the objective period, which would not be representative of the sentiment during the objective period.
 
-With these requirements, we ended up downloading a total of 91,672 comments posted by 1,553 unique authors. In the graph below, the daily number of comments is displayed. There seems to be a slight downwards trend in the daily comments made to the downloaded submissions, with comments dropping dramatically after the 11-02-2020, being the last day for which submissions were downloaded. 
+ ## Preprocessing of comments
 
-![](/images/comments_per_day_new.svg)
-*Number of daily comments included in the comments sections of the downloaded submissions.*
+To ensure that we only included authors with a good amount of comments on which to base our inference of the authors' political conviction, we excluded comments made by authors with less than 50 comments. 
 
-## Preprocessing of comments
-
-As we wanted to create a binary partition of the active users on r/politics into Trump and Biden supporters based on their posts to the site, it was necessary to assign a label to each of the comments stating whether the comment related to either Trump or Biden. Our first approach to this labelling was to simply assign the "Politician mentioned" attribute of the submission to which each comment was connected by being part of its comments section. However, this labelling introduced some ambiguity in the case of a comments explicitely mentioning the candidate "opposite" of the one mentioned in their related submission. E.g. if the original submission mentioned Trump and one of its related comments mentioned Biden. Consequently, we decided to exclude these "ambiguous" comments and the entire part of the comments section stemming from these comments, as determining which of the candidates was refered to by these comments would be more non-trivial, given our rather naïve method of processing the natural language used in the comments. 
+As we wanted to create a binary partition of the active users on r/politics into Trump and Biden supporters based on their posts to the site, it was necessary to assign a label to each of the comments stating whether the comment related to either Trump or Biden. Our first approach to this labelling was to simply assign the "Politician mentioned" attribute of the submission to which each comment was connected by being part of its comments section. However, this labelling introduced some ambiguity in the case of  comments explicitely mentioning the candidate "opposite" of the one mentioned in their related submission. E.g. if the original submission mentioned Trump and one of its related comments mentioned Biden. Consequently, we decided to exclude these "ambiguous" comments and the entire part of the comments section stemming from these comments, as determining which of the candidates was refered to by these comments would be more non-trivial, given our rather naïve method of processing the natural language used in the comments. 
 
 This resulted in a pruning of the comments section of each of the submissions, which can be visualized as a tree-like structure seen below with the root being the original submission and the branches being comments to this submission. 
 
@@ -99,8 +96,12 @@ __Figure 5__
 
 After this pruning of the comments sections, our original approach of labelling comments based on the "Politician mentioned" attribute of the related submission worked as intended. 
 
-Finally, after having pruned the comments dataset, we excluded all comments made by redditors with less than 30 comments left in the pruned dataset. This was done to ensure that we had a good amount of comments on which to base our inference of the authors' political conviction. 
+With these requirements, we ended up downloading a total of 91,672 comments posted by 1,553 unique authors. In the graph below, the daily number of comments is displayed. There seems to be a slight downwards trend in the daily comments made to the downloaded submissions, with comments dropping dramatically after the 11-02-2020, being the last day for which submissions were downloaded. 
 
+![](/images/comments_per_day_new.svg)
+*Number of daily comments included in the comments sections of the downloaded submissions.*
+
+Finally, after having pruned the comments dataset, we excluded all comments made by redditors with less than 30 comments left in the pruned dataset.
 Below we have gathered some summary statistics of the collected comments. 
 
 | __Statistics of the final comments dataset__ |  | 
@@ -114,7 +115,7 @@ Below we have gathered some summary statistics of the collected comments.
 
 
 # 3. The Polling Data
-The polling data used in this project is collected from FiveThirtyEight. The data set contains polling results from our objective period, generated by different polling firms like YouGov and SurveyMonkey. Each poll has been generated over a smaller time window, typically spanning a couple of days, and with varying number of respondents. By the end of the polls, the percentage of respondents who have voted for a specific candidate has been registered. We have not investigated further how the individual polling firms have performed the polls, but we put our faith in their ability to make polls representative of the American population.
+The polling data used in this project is collected from FiveThirtyEight. The dataset contains polling results from our objective period, generated by different polling firms like YouGov and SurveyMonkey. Each poll has been generated over a smaller time window, typically spanning a couple of days, and with varying number of respondents. By the end of the polls, the percentage of respondents who have voted for a specific candidate has been registered. We have not investigated further how the individual polling firms have performed the polls, but we put our faith in their ability to make polls representative of the American population.
 
 We calculated the simple average of the polls with identical ending dates and created the below plot showing the average daily polling percentages for the two presidential candidates. We see that during the last few weeks up till the election, Biden was in the lead, with Trump seeming to gain popularity during the last week before the election. 
 
