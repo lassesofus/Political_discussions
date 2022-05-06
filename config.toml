@@ -5,7 +5,7 @@ relativeURLs = true
 theme = "theme" 
 [params]
     authors = ["Alexander Valentini", "Jakob Engel Ketmig", "Lasse Møller Sørensen"]
-    notebook = "/Explainer_Notebook_FINAL.html"
+    notebook = "/Explainer_Notebook-FINAL.html"
     data = "https://drive.google.com/drive/folders/1UvzNpKcS7egE62V3mgZRvvcwSYdKZTii?usp=sharing"
     github = "https://github.com/JaQtae/SocInfo2022/tree/FinalProject"
     [[params.nav]]
