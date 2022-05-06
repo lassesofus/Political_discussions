@@ -13,7 +13,7 @@ In the following, we will describe these datasets and give an overview of their 
 
 # 1. The Submissions 
 ________________
-Visitors at r/politics will quickly notice that the majority of the submissions posted on the site are by users linking to news articles published on news media sites like CNN or The Huffington Post. The headlines of these linked articles are then shown on r/politics as the titles of the submissions. Other users can then comment on the linked article, which is what ultimately constitutes the actual user-generated content on the site.
+Visitors at r/politics will quickly notice that the majority of the submissions posted on the site are by users linking to news articles published on news media sites like CNN or The Huffington Post. The headlines of these linked articles are then shown on r/politics as the titles of the submissions. Other users can then comment on the linked articles, which is what ultimately constitutes the actual user-generated content on the site.
 
 ![](/images/example_of_submission.png)
 *One of the downloaded submissions mentioning "Trump".*

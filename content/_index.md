@@ -29,7 +29,7 @@ We have split our findings into three separate pages, accesible in the top menu,
 3. The constructed network of redditors
 
 This website is meant as a general overview of our findings. For the more interested reader, we include a link to a Jupyter Notebook file containing the Python code used for the analyses:
-## [Explainer Notebook](Explainer_Notebook_Final.html)
+## [Explainer Notebook](Explainer_Notebook_FINAL.html)
 
 We hope you find our results interesting. <br>
 Enjoy!
