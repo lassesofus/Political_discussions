@@ -1,4 +1,4 @@
-baseURL = "https://lassesofus.github.io/Website-template/"
+baseURL = "https://lassesofus.github.io/Political_discussions/"
 title = "Discussions on r/politics"
 description = "Exam project in 02467"
 relativeURLs = true
@@ -6,8 +6,8 @@ theme = "theme"
 [params]
     authors = ["Alexander Valentini", "Jakob Engel Ketmig", "Lasse Møller Sørensen"]
     notebook = "/explainer-notebook.html"
-    data = "https://drive.google.com"
-    github = "https://github.com/lassesofus/Website-template"
+    data = "https://drive.google.com/drive/folders/1UvzNpKcS7egE62V3mgZRvvcwSYdKZTii?usp=sharing"
+    github = "https://github.com/JaQtae/SocInfo2022/tree/FinalProject"
     [[params.nav]]
         label = "Data"
         link = "/data-description"
