@@ -9,7 +9,7 @@ During this project, we worked with three data sets
 2. The comments sections of the above submissions.
 3. Polling data obtained from [FiveThirtyEight](https://data.fivethirtyeight.com/).
 
-In the following, we will describe these data sets and give an overview of their most important properties. 
+In the following, we will describe these datasets and give an overview of their most important properties. 
 
 # 1. The Submissions 
 ________________
@@ -69,7 +69,7 @@ Below we have gathered some summary statistics of the collected submissions.
 
 # 2. The Comments
 
-For each of the 9,018 submissions, we downloaded the associated comments section, excluding any comments made after 11-10-2020 and by the most common moderator bots, like the *AutoModerator* bot who posts a comment to every submission to remind users of the rules and guidelines of the subreddit.
+For each of the 9,018 submissions, we downloaded the associated comments section, excluding any comments made by the most common moderator bots, like the *AutoModerator* bot who posts a comment to every submission on r/politics to remind users of the rules and guidelines of the subreddit.
 
 
 ![](/images/AutoMod.png)
@@ -89,20 +89,24 @@ With these requirements, we ended up downloading a total of 91,672 comments post
 
 ## Preprocessing of comments
 
-As we wanted to create a binary partition of the active users on r/politics into Trump and Biden supporters based on their posts to the site, it was necessary to assign a label to each of the comments stating whether the comment related to either Trump or Biden. Our first approach to this labelling was to simply assign the "Politician mentioned" attribute of the submission to which each comment was connected by being part of its comments section. However, this labelling introduced some ambiguity in the case of a comments explicitely mentioning the candidate "opposite" of the one mentioned in their related submission. E.g. if the original submission mentioned Trump and one of its related comments mentioned Biden. Consequently, we decided to exclude these "ambiguous" comments and the entire part of the comments section stemming from these comments, as determining which of the candidates were refered to by these comments would be more non-trivial, given our rather naïve method of processing the natural language used in the comments. 
+As we wanted to create a binary partition of the active users on r/politics into Trump and Biden supporters based on their posts to the site, it was necessary to assign a label to each of the comments stating whether the comment related to either Trump or Biden. Our first approach to this labelling was to simply assign the "Politician mentioned" attribute of the submission to which each comment was connected by being part of its comments section. However, this labelling introduced some ambiguity in the case of a comments explicitely mentioning the candidate "opposite" of the one mentioned in their related submission. E.g. if the original submission mentioned Trump and one of its related comments mentioned Biden. Consequently, we decided to exclude these "ambiguous" comments and the entire part of the comments section stemming from these comments, as determining which of the candidates was refered to by these comments would be more non-trivial, given our rather naïve method of processing the natural language used in the comments. 
 
 This resulted in a pruning of the comments section of each of the submissions, which can be visualized as a tree-like structure seen below with the root being the original submission and the branches being comments to this submission. 
 
 __Figure 5__
 ![](/images/Pruning.svg)
-*We pruned the comments section of each submission to avoid ambiguity regarding which of the presidential candidates the individual comments refered to. If a comment mentioned a candidate opposite of the one mentioned in the original submission, this comment and the entire part of the comments section stemming from this comment would be omitted, here marked by the red crosses.*
+*Illustration of how the comments section of each submission was pruned to avoid ambiguity regarding which of the presidential candidates the individual comments refered to. The root of the illustrated comments section tree is the original submission and the boxes below this are comments in its comments section. In each box, it is stated whether the post mentions, Trump, Biden or none of them ("...Bla bla..."). If a comment mentioned a candidate opposite of the one mentioned in the original submission, this comment and the entire part of the comments section stemming from this comment would be omitted, here marked by the red crosses.*
 
 After this pruning of the comments sections, our original approach of labelling comments based on the "Politician mentioned" attribute of the related submission worked as intended. 
+
+Finally, after having pruned the comments dataset, we excluded all comments made by redditors with less than 30 comments left in the pruned dataset. This was done to ensure that we had a good amount of comments on which to base our inference of the authors' political conviction. 
+
+Below we have gathered some summary statistics of the collected comments. 
 
 | __Statistics of the final comments dataset__ |  | 
 |---|---|
 | Total number of comments: | 91,672 |
-| Average number of characters: | 138.25 |
+| Average number of characters per comment: | 138.25 |
 | Total number of comments related to Trump: | 77,030 |
 | Total number of comments related to Biden: | 14,642 |
 | Number of unique comment authors: | 1,553 |
